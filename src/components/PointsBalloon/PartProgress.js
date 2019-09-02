@@ -6,6 +6,7 @@ import { improveGroupName } from "../../util/strings"
 import CustomTooltip from "./CustomTooltip"
 import { SMALL_MEDIUM_BREAKPOINT } from "../../util/constants"
 import { getCourseVariant } from "../../services/moocfi"
+import { withTranslation } from "react-i18next"
 
 const PartProgressContainer = styled.div`
   margin-bottom: 0.5rem;
@@ -42,7 +43,7 @@ const CustomLabel = ({ x, y, stroke, value }) => {
   )
 }
 
-const PartProgress = ({ name, data, appliesForStudyRight }) => {
+const PartProgress = ({ name, data, appliesForStudyRight, t }) => {
   var BAR_CHART_WIDTH = 375
   var BAR_CHART_Y_AXIS_WIDTH = 142
 
@@ -67,12 +68,12 @@ const PartProgress = ({ name, data, appliesForStudyRight }) => {
     maxPointsSum += data.max_points
   })
   let totalProgress = Math.floor((nPointsSum / maxPointsSum) * 100) / 100
-  // allChartData.push({
-  //   tool: "Tehtäväpisteet yhteensä",
-  //   progress: Math.floor(totalProgress * 100 + 0.000000001),
-  //   n_points: nPointsSum,
-  //   max_points: maxPointsSum,
-  // })
+  allChartData.push({
+    tool: "Tehtäväpisteet yhteensä",
+    progress: Math.floor(totalProgress * 100 + 0.000000001),
+    n_points: nPointsSum,
+    max_points: maxPointsSum,
+  })
   return (
     <PartProgressContainer>
       <b>{improveGroupName(name)}</b>
@@ -98,16 +99,29 @@ const PartProgress = ({ name, data, appliesForStudyRight }) => {
             />
           </Bar>
         </StyledBarChart>
-
-        <LargeP>Tässä ei näy Moodle-tehtävistä saatuja pisteitä.</LargeP>
-        {/* <LargeP>
-          Osasta saadut kurssipisteet:{" "}
+        <LargeP>
+          {t("progressTotal")}{" "}
           {Math.floor(Math.min(100, totalProgress * 111.112))}
           /100.
-        </LargeP> */}
+        </LargeP>
+        {appliesForStudyRight &&
+          (getCourseVariant() === "nodl" ? (
+            <SmallP>{t("noTimelimit")}</SmallP>
+          ) : (
+            <SmallP>
+              {t("canApplyForStudyRight")}{" "}
+              {
+                allChartData.find(o => o.tool === "Ohjelmointitehtävät")
+                  ?.progress
+              }
+              %.
+            </SmallP>
+          ))}
       </div>
     </PartProgressContainer>
   )
 }
 
-export default withSimpleErrorBoundary(PartProgress)
+export default withTranslation("points-balloon")(
+  withSimpleErrorBoundary(PartProgress),
+)

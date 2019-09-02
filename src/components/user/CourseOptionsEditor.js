@@ -6,6 +6,8 @@ import {
   Checkbox,
   Radio,
   RadioGroup,
+  Card,
+  CardContent,
 } from "@material-ui/core"
 
 import { OutboundLink } from "gatsby-plugin-google-analytics"
@@ -16,7 +18,11 @@ import { updateUserDetails, userDetails } from "../../services/moocfi"
 
 import styled from "styled-components"
 import withSimpleErrorBoundary from "../../util/withSimpleErrorBoundary"
-import { stringToBoolean } from "../../util/strings"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faInfoCircle as icon } from "@fortawesome/free-solid-svg-icons"
+import DropdownMenu from "./DropdownMenu"
+import { Link } from "gatsby"
+import { withTranslation } from "react-i18next"
 
 const Row = styled.div`
   margin-bottom: 1.5rem;
@@ -33,6 +39,10 @@ const FormContainer = styled.div`
   margin-top: 2rem;
 `
 
+const StyledIcon = styled(FontAwesomeIcon)`
+  margin-right: 0.25rem;
+`
+
 class CourseOptionsEditor extends React.Component {
   async componentDidMount() {
     const data = await userDetails()
@@ -40,17 +50,11 @@ class CourseOptionsEditor extends React.Component {
       {
         first_name: data.user_field?.first_name,
         last_name: data.user_field?.last_name,
+        email: data.email,
         student_number: data.user_field?.organizational_id,
-        digital_education_for_all: stringToBoolean(
-          data.extra_fields?.digital_education_for_all,
-        ),
-        open_university_student: stringToBoolean(
-          data.extra_fields?.open_university_student,
-        ),
-        university_of_helsinki_student: stringToBoolean(
-          data.extra_fields?.university_of_helsinki_student,
-        ),
-        marketing: stringToBoolean(data.extra_fields?.marketing),
+        digital_education_for_all:
+          data.extra_fields?.digital_education_for_all === "t",
+        marketing: data.extra_fields?.marketing === "t",
         research: data.extra_fields?.research,
         loading: false,
       },
@@ -63,12 +67,11 @@ class CourseOptionsEditor extends React.Component {
   onClick = async e => {
     e.preventDefault()
     this.setState({ submitting: true })
-    const extraFields = {
+    let extraFields = {
       digital_education_for_all: this.state.digital_education_for_all,
-      open_university_student: this.state.open_university_student,
-      university_of_helsinki_student: this.state.university_of_helsinki_student,
       marketing: this.state.marketing,
       research: this.state.research,
+      course_variant: this.state.currentCourseVariant,
     }
     const userField = {
       first_name: this.state.first_name,
@@ -88,12 +91,11 @@ class CourseOptionsEditor extends React.Component {
     error: true,
     errorObj: {},
     digital_education_for_all: false,
-    open_university_student: false,
-    university_of_helsinki_student: false,
     marketing: false,
     research: undefined,
     first_name: undefined,
     last_name: undefined,
+    email: undefined,
     student_number: undefined,
     loading: true,
     focused: null,
@@ -130,24 +132,33 @@ class CourseOptionsEditor extends React.Component {
     }))
   }
 
+  setSelectedVariant = value => {
+    this.setState({ currentCourseVariant: value })
+  }
+
   render() {
     return (
       <FormContainer>
-        <h1>Opiskelijan tiedot</h1>
-        <Form>
+        <Loading loading={this.state.loading} heightHint="490px">
           <InfoBox>
-            Kerro itsestäsi. Nämä tiedot auttavat suoritusten merkitsemisessä ja
-            kurssin järjestämisessä. Voit muokata tietoja myöhemmin kurssin
-            asetuksista. Tietojen täyttämisen jälkeen paina "Tallenna" sivun
-            alareunasta.
+            <Card>
+              <CardContent>
+                {this.props.t("loggedInWith")}
+                {this.state.email}
+              </CardContent>
+            </Card>
           </InfoBox>
+        </Loading>
+        <h1>{this.props.t("studentInfo")}</h1>
+        <Form>
+          <InfoBox>{this.props.t("aboutYourself")}</InfoBox>
           <Loading loading={this.state.loading} heightHint="490px">
             <div>
               <Row>
                 <TextField
                   variant="outlined"
                   type="text"
-                  label="Etunimi"
+                  label={this.props.t("firstName")}
                   autoComplete="given-name"
                   name="first_name"
                   InputLabelProps={{
@@ -167,7 +178,7 @@ class CourseOptionsEditor extends React.Component {
                 <TextField
                   variant="outlined"
                   type="text"
-                  label="Sukunimi"
+                  label={this.props.t("lastName")}
                   autoComplete="family-name"
                   name="last_name"
                   InputLabelProps={{
@@ -187,7 +198,7 @@ class CourseOptionsEditor extends React.Component {
                 <TextField
                   variant="outlined"
                   type="text"
-                  label="Helsingin yliopiston opiskelijanumero"
+                  label={this.props.t("sid")}
                   name="student_number"
                   InputLabelProps={{
                     shrink:
@@ -197,37 +208,20 @@ class CourseOptionsEditor extends React.Component {
                   fullWidth
                   value={this.state.student_number}
                   onChange={this.handleInput}
-                  helperText="Jätä tyhjäksi, jos et ole tällä hetkellä Helsingin yliopiston opiskelija."
+                  helperText={this.props.t("nosid")}
                   onFocus={this.handleFocus}
                   onBlur={this.handleUnFocus}
                 />
               </Row>
 
               <Row>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={this.state.university_of_helsinki_student}
-                      onChange={this.handleCheckboxInput}
-                      name="university_of_helsinki_student"
-                      value="1"
-                    />
+                <DropdownMenu
+                  selectedVariant={
+                    this.state.currentCourseVariant ||
+                    this.props.courseVariant ||
+                    "dl"
                   }
-                  label="Olen tällä hetkellä Helsingin yliopiston opiskelija. Olen ilmoittautunut kurssille WebOodissa."
-                />
-              </Row>
-
-              <Row>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={this.state.open_university_student}
-                      onChange={this.handleCheckboxInput}
-                      name="open_university_student"
-                      value="1"
-                    />
-                  }
-                  label="Olen Helsingin yliopiston Avoimen yliopiston opiskelija. Olen ilmoittautunut kurssille osoitteessa https://www.avoin.helsinki.fi/palvelut/esittely.aspx?o=126422231."
+                  setSelectedVariant={this.setSelectedVariant}
                 />
               </Row>
 
@@ -241,7 +235,7 @@ class CourseOptionsEditor extends React.Component {
                       value="1"
                     />
                   }
-                  label="Olen tällä hetkellä opiskelijana Digital Education for All -hankkeessa. Olen ilmoittautunut kurssille osoitteessa https://www.avoin.helsinki.fi/palvelut/esittely.aspx?o=124756797"
+                  label="Olen tällä hetkellä opiskelijana Digital Education for All -hankkeessa. Jätä tämä valitsematta mikäli et tiedä kyseisestä hankkeesta."
                 />
               </Row>
 
@@ -255,38 +249,24 @@ class CourseOptionsEditor extends React.Component {
                       value="1"
                     />
                   }
-                  label="Minulle voi lähettää tietoa uusista kursseista"
+                  label={this.props.t("marketing")}
                 />
               </Row>
             </div>
           </Loading>
 
-          <h2>Kurssilla tehtävästä tutkimuksesta</h2>
+          <h2>{this.props.t("researchTitle")}</h2>
 
-          <p>
-            Kurssilla tehdään oppimiseen liittyvää tutkimusta. Tällä
-            tutkimuksella on useampia tavoitteita:
-          </p>
+          <p>{this.props.t("research1")}</p>
 
           <ol>
-            <li>
-              luoda oppimateriaali, joka ottaa yksilölliset erot huomioon ja
-              reagoi tarvittaessa tarjoten kohdennetumpaa oppisisältöä
-            </li>
-            <li>
-              kehittää digitaalisissa ympäristöissä tapahtuvaan oppimiseen
-              liittyvää ymmärrystä ja tietoa, sekä
-            </li>
-            <li>
-              tukea tutkimustiedon kautta muita oppimateriaalien kehittäjiä ja
-              oppimisen tutkijoita. Tämä johtaa luonnollisesti myös parempaan
-              oppimiskokemukseen opiskelijoille.
-            </li>
+            <li>{this.props.t("research2")}</li>
+            <li>{this.props.t("research3")}</li>
+            <li>{this.props.t("research4")}</li>
           </ol>
 
           <p>
-            Tällaisesta oppimisanalytiikaksi kutsutusta tutkimuksesta
-            kiinnostuneiden kannattaa tutustua esimerkiksi artikkeliin{" "}
+            {this.props.t("research5")}
             <OutboundLink
               href="https://dl.acm.org/citation.cfm?id=2858798"
               target="_blank"
@@ -298,27 +278,14 @@ class CourseOptionsEditor extends React.Component {
             .
           </p>
 
-          <p>
-            Tutkimusdatan hallinnasta vastaa Helsingin yliopiston
-            tietojenkäsittelytieteen laitoksen Agile Education Research -ryhmän
-            Arto Hellas. Anonymisoimattomaan tutkimusdataan eivät pääse käsiksi
-            muut tutkijat. Voit myös pyytää milloin tahansa sinusta kerätyn
-            datan poistamista lähettämällä sähköpostin osoitteeseen
-            arto.hellas@cs.helsinki.fi
-          </p>
+          <p>{this.props.t("research6")}</p>
 
-          <p>
-            Työskentelystä kerättyä tietoa käytetään tutkimuksessa. Kerätty
-            tieto sisältää tietoa oppimateriaalien käytöstä, kurssitehtävien
-            tekemisestä sekä kokeissa pärjäämisestä. Tutkimustuloksista ei
-            pystytä tunnistamaan yksittäisiä opiskelijoita. Jos et osallistu
-            tutkimukseen, siitä ei tule minkäänlaisia seuraamuksia.
-          </p>
+          <p>{this.props.t("research7")}</p>
 
           <Row>
             <Loading loading={this.state.loading} heightHint="115px">
               <RadioGroup
-                aria-label="Tutkimukseen osallistuminen"
+                aria-label={this.props.t("researchAgree")}
                 name="research"
                 value={this.state.research}
                 onChange={this.handleInput}
@@ -326,12 +293,12 @@ class CourseOptionsEditor extends React.Component {
                 <FormControlLabel
                   value="1"
                   control={<Radio color="primary" />}
-                  label="Osallistun oppimiseen liittyvään tutkimukseen. Valitsemalla tämän autat sekä nykyisiä että tulevia opiskelijoita."
+                  label={this.props.t("researchYes")}
                 />
                 <FormControlLabel
                   value="0"
                   control={<Radio />}
-                  label="En osallistu oppimiseen liittyvään tutkimukseen."
+                  label={this.props.t("researchNo")}
                 />
               </RadioGroup>
             </Loading>
@@ -341,17 +308,18 @@ class CourseOptionsEditor extends React.Component {
             <Button
               onClick={this.onClick}
               disabled={this.state.submitting || this.state.error}
+              loading={this.state.submitting}
               variant="contained"
               color="primary"
               fullWidth
             >
-              Tallenna
+              {this.props.t("save")}
             </Button>
           </Row>
         </Form>
         {this.state.error && (
           <InfoBox>
-            <b>Täytä vaaditut kentät.</b>
+            <b>{this.props.t("fillRequired")}</b>
           </InfoBox>
         )}
       </FormContainer>
@@ -359,4 +327,6 @@ class CourseOptionsEditor extends React.Component {
   }
 }
 
-export default withSimpleErrorBoundary(CourseOptionsEditor)
+export default withTranslation("common")(
+  withSimpleErrorBoundary(CourseOptionsEditor),
+)

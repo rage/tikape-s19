@@ -22,23 +22,28 @@ const Credits = () => (
         .
       </p>
       <h2>Kurssimateriaali</h2>
+
       <p>
         Kurssimateriaalin ovat kirjoittaneet Arto Hellas (né Vihavainen) ja
-        Matti Luukkainen.
+        Matti Luukkainen. Kurssin sisältöön ovat myös vaikuttaneet seuraavat
+        henkilöt (listattu aakkosjärjestyksessä):
       </p>
-      <p>
-        Materiaalin sisältöön ja sen kehitykseen ovat vaikuttaneet useat
-        henkilöt, mm. Dan Lindholm, Terho Uotila, ja Juha-Pekka Eloranta.
-        Materiaalin aiemman version kontribuoijia löytyy osoitteesta{" "}
-        <OutboundLink
-          href="https://github.com/materiaalit/tikape-s18/graphs/contributors"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          https://github.com/materiaalit/tikape-s18/graphs/contributors
-        </OutboundLink>
-        .
-      </p>
+
+      <ul>
+        <li>Antti Laaksonen</li>
+        <li>Antti Leinonen</li>
+        <li>Henrik Nygren</li>
+        <li>Joel Kaasinen</li>
+        <li>Juhana Laurinharju</li>
+        <li>Juho Leinonen</li>
+        <li>Martin Pärtel</li>
+        <li>Matti Paksula</li>
+        <li>Mikael Nousiainen</li>
+        <li>Nea Pirttinen</li>
+        <li>Pekka Mikkola</li>
+        <li>Vilma Kangas</li>
+      </ul>
+
       <p>
         Kurssin materiaali on lisensoitu{" "}
         <OutboundLink
@@ -54,7 +59,9 @@ const Credits = () => (
         lisensoida samalla lisenssillä. Materiaalien käyttö kaupalliseen
         tarkoitukseen on ilman erillistä lupaa kielletty.
       </p>
+
       <h2>Kurssilla käytössä oleva teknologia</h2>
+
       <p>
         Kurssin sivun ovat tehneet{" "}
         <OutboundLink

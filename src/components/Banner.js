@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import Background from "../images/books3.jpg"
+import CourseSettings from "../../course-settings"
+
+import BannerImage from "../../banner.jpg"
 import withSimpleErrorBoundary from "../util/withSimpleErrorBoundary"
 
 const BannerWrapper = styled.header`
@@ -12,8 +14,7 @@ const BannerWrapper = styled.header`
   align-items: center;
   margin-bottom: 2rem;
   background-color: #c0392b;
-  background-image: url(${Background});
-  background-size: cover;
+  background-image: url(${BannerImage});
   text-align: center;
   h1 {
   }
@@ -27,7 +28,7 @@ const Heading = styled.div`
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 500;
   font-size: 2rem;
-  color: #6e3c1b;
+  color: #c0392b;
   background: white;
   padding: 0.5rem;
   margin: 1rem;
@@ -42,7 +43,7 @@ const SubHeading = styled.div`
       Roboto, 'Helvetica Neue', Arial, Noto Sans, sans-serif, 'Apple Color Emoji',
       'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     font-weight: 500;
-    color: #6E3C1B;
+    color: #c0392b;
     background: white;
     padding .5rem;
     font-size: 1.4rem;
@@ -51,11 +52,8 @@ const SubHeading = styled.div`
 
 const Banner = () => (
   <BannerWrapper>
-    <Heading>Tietokantojen perusteet</Heading>
-    <SubHeading>
-      Digitalisaation kulmakivi tutuksi -- menetelmiä tiedon tallentamiseen ja
-      hakemiseen{" "}
-    </SubHeading>
+    <Heading>{CourseSettings.default.name}</Heading>
+    <SubHeading>{CourseSettings.default.subtitle}</SubHeading>
   </BannerWrapper>
 )
 

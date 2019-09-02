@@ -2,9 +2,8 @@ const GraphQLString = require("gatsby/graphql").GraphQLString
 const GraphQLList = require("gatsby/graphql").GraphQLList
 const GraphQLObjectType = require("gatsby/graphql").GraphQLObjectType
 
-const quiznatorRegex = /<\s*quiznator\s*id\s*=\s*['"]\s*(\w+)\s*['"]\s*>/gm
-const moodleRegex = /<\s*moodle-exercise\s*name\s*=\s*['"]\s*(.*)\s*['"]\s*>/gm
-const sqlTrainerRegex = /<\s*sqltrainer-exercise\s*name\s*=\s*['"]\s*(.*)\s*['"]\s*>/gm
+const quizRegex = /<\s*quiz\s*id\s*=\s*['"]\s*([\w-]+)\s*['"]\s*>/gm
+const crowdsorcererRegex = /<\s*crowdsorcerer\s*id\s*=\s*['"]\s*(\w+)\s*['"].*>/gm
 const programmingExerciseTagRegex = /<\s*programming-exercise\s+(.*)\s*>/gm
 const programmingExerciseNameRegex = /\bname\s*=\s*(["].*?["]|['].*?['])/gm
 
@@ -50,11 +49,11 @@ exports.setFieldsOnGraphQLNodeType = ({ type }) => {
         type: GraphQLList(ExerciseType),
         resolve: (node, _fieldArgs) => {
           const source = node.rawMarkdownBody
-          const quizzes = getMatches(source, quiznatorRegex, 1).map(res => {
+          const quizzes = getMatches(source, quizRegex, 1).map(res => {
             return {
               id: res.match,
               location: res.location,
-              type: "quiznator",
+              type: "quiz",
               parentPagePath: node.frontmatter.path,
             }
           })
@@ -80,33 +79,18 @@ exports.setFieldsOnGraphQLNodeType = ({ type }) => {
             }
           })
 
-          const moodles = getMatches(source, moodleRegex, 1).map(res => {
+          const crowdsorcerers = getMatches(source, crowdsorcererRegex, 1).map(res => {
             return {
               id: res.match,
               location: res.location,
-              type: 'moodle-exercise',
+              type: "crowdsorcerer",
               parentPagePath: node.frontmatter.path,
             }
           })
 
-          const sqlTrainers = getMatches(source, sqlTrainerRegex, 1).map(
-            res => {
-              return {
-                id: res.match,
-                location: res.location,
-                type: 'sqltrainer-exercise',
-                parentPagePath: node.frontmatter.path,
-              }
-            }
-          )
-
-          return programmingExercises
-            .concat(quizzes)
-            .concat(moodles)
-            .concat(sqlTrainers)
-            .sort(function(a, b) {
-              return a.location - b.location
-            })
+          return programmingExercises.concat(quizzes).concat(crowdsorcerers).sort(function(a, b) {
+            return a.location - b.location
+          })
         },
       },
     }

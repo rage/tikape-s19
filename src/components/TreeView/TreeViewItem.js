@@ -24,32 +24,32 @@ const ChildrenList = styled.ul`
 const ListItem = styled.li`
   list-style-type: none;
   margin-bottom: 0;
-  padding: 0.75rem;
+  padding: 0.75em;
   display: flex;
   align-items: center;
 `
 
 const ListItemLabel = styled.div`
   flex: 1;
-  padding: 0.3rem;
+  padding: 0.3em;
 `
 
 const NavigationLink = styled(GatsbyLink)`
-  border-left: 0.5rem solid white;
+  border-left: 0.5em solid white;
   width: 100%;
   background-color: white;
   ${props =>
     props.active === "t" &&
     `
-    border-color: #6E3C1B !important;
-    background-color: #F5F5F5;
+    border-color: #f75b4b !important;
+    background-color: #edeaea;
   `}
 
   :hover {
     text-decoration: none;
     color: black;
-    background-color: #fafafa;
-    border-color: #a37659 !important;
+    background-color: #f5ebeb;
+    border-color: #f5ebeb;
     //filter: brightness(0.5);
   }
 `
@@ -58,7 +58,7 @@ const DisabledItem = styled.div`
   opacity: 0.5;
   width: 100%;
   cursor: default !important;
-  border-left: 0.5rem solid white;
+  border-left: 0.5em solid white;
 `
 
 const ItemTitleWrapper = styled.div`
@@ -71,7 +71,7 @@ const ItemTitleWrapper = styled.div`
   }
 
   &.active-section {
-    background-color: #f5f5f5;
+    background-color: #ffdfdf;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     a {
@@ -82,19 +82,24 @@ const ItemTitleWrapper = styled.div`
 
 const StyledIcon = styled(FontAwesomeIcon)`
   vertical-align: middle;
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
   transform: rotate(calc(var(--open-ratio) * 90deg));
 `
 
 const StyledChip = styled(Chip)`
   span {
-    width: 86px;
+    width: 6em;
   }
 `
 
 const StyledDivider = styled(Divider)`
-  margin: 1rem 16px !important;
+  margin: 1em 16px !important;
+`
+
+const Centered = styled.div`
+  text-align: center;
+  margin-bottom: 0.5rem;
 `
 
 class TreeViewItem extends React.Component {
@@ -119,13 +124,20 @@ class TreeViewItem extends React.Component {
   }
   render() {
     if (this.props.item.separator) {
-      return <StyledDivider />
+      return (
+        <Centered>
+          <StyledDivider />
+          <b>{this.props.item.title}</b>
+        </Centered>
+      )
     }
     return (
       <React.Fragment>
         <Location>
           {({ navigate, location }) => {
-            let active = location.pathname.startsWith(this.props.item.path)
+            let active =
+              location.pathname === this.props.item.path ||
+              location.pathname.includes(this.props.item.path + "/")
             if (this.props.item.path === "/") {
               active = location.pathname === this.props.item.path
             }

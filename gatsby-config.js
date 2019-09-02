@@ -1,7 +1,12 @@
+const red = require("@material-ui/core/colors/red").default
+const blue = require("@material-ui/core/colors/red").default
+
+const CourseSettings = require('./course-settings').default
+
 module.exports = {
   siteMetadata: {
-    title: "Tietokantojen perusteet - 2019",
-    siteUrl: `https://tikape-19.mooc.fi`,
+    title: CourseSettings.name,
+    siteUrl: `https://ohjelmointi-19.mooc.fi`,
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -10,9 +15,11 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/data`,
-        name: "markdown-pages"
+        name: "markdown-pages",
+
       }
     },
+
     `gatsby-plugin-sharp`,
     `gatsby-plugin-catch-links`,
     {
@@ -101,14 +108,14 @@ module.exports = {
               }
             }
           },
-          `gatsby-remark-component`
+          `@rstacruz/gatsby-remark-component`
         ]
       }
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-47575342-1",
+        trackingId: "UA-47575342-9",
         // Puts tracking script in the head instead of the body
         head: false,
         // Setting this parameter is optional
@@ -143,6 +150,11 @@ module.exports = {
     },
     {
       resolve: "gatsby-transformer-moocfi-exercises"
-    }
+    },
+    `gatsby-plugin-top-layout`,
+    {
+      resolve: 'gatsby-plugin-material-ui',
+    },
+    `gatsby-plugin-meta-redirect` // make sure to put last in the array
   ]
 };

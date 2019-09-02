@@ -7,7 +7,14 @@
 const path = require("path")
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
+
+  createRedirect({
+    fromPath: `/osa-1/4-muuttujat`,
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: `/osa-1/4-laskentaa`,
+  })
 
   const courseMaterialTemplate = path.resolve(
     `src/templates/CourseContentTemplate.js`,
@@ -16,6 +23,8 @@ exports.createPages = ({ actions, graphql }) => {
   const coursePartOverviewTemplate = path.resolve(
     `src/templates/CoursePartOverviewTemplate.js`,
   )
+
+  const infoPageTemplate = path.resolve(`src/templates/InfoPageTemplate.js`)
 
   const query = `
   {
@@ -32,6 +41,7 @@ exports.createPages = ({ actions, graphql }) => {
           frontmatter {
             path
             overview
+            information_page
           }
         }
       }
@@ -44,10 +54,22 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
+    if (!result.data.allMarkdownRemark) {
+      console.log("No markdown pages generated. Did you hide all of them?")
+      return
+    }
+
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       let template = courseMaterialTemplate
       if (node.frontmatter.overview) {
         template = coursePartOverviewTemplate
+      }
+      if (node.frontmatter.information_page) {
+        template = infoPageTemplate
+      }
+      if (!node.frontmatter.path) {
+        // To prevent a bug that happens in development from time to time
+        return;
       }
       createPage({
         path: node.frontmatter.path,

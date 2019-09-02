@@ -1,7 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 import Layout from "../templates/Layout"
-import { authenticate } from "../services/moocfi"
+import { authenticate, loggedIn } from "../services/moocfi"
 import { navigate, Link } from "gatsby"
 import { TextField, Button } from "@material-ui/core"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
@@ -30,6 +30,27 @@ const FormContainer = styled.div`
 class SignInPage extends React.Component {
   static contextType = LoginStateContext
 
+  componentDidMount = () => {
+    // This is a workaroud to some really weird login redirect problems
+    this.fallbackRedirector = setInterval(() => {
+      if (!loggedIn()) {
+        return
+      }
+      setTimeout(() => {
+        if (
+          window.location.pathname === "/sign-in/" ||
+          window.location.pathname === "/sign-in"
+        ) {
+          window.location = "/"
+        }
+      }, 2000)
+    }, 1000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.fallbackRedirector)
+  }
+
   onClick = async e => {
     e.preventDefault()
     if (
@@ -47,14 +68,19 @@ class SignInPage extends React.Component {
         username: this.state.email,
         password: this.state.password,
       })
+
+      // Give loginstate time to update
       setTimeout(() => {
-        // Give loginstate time to
-        if (typeof window !== "undefined") {
-          console.log("Navigating back")
-          window.history.back()
-          return
+        try {
+          if (typeof window !== "undefined") {
+            console.log("Navigating back")
+            window.history.go(-1)
+            return
+          }
+          navigate("/")
+        } catch (_e) {
+          navigate("/")
         }
-        navigate("/")
       }, 100)
     } catch (error) {
       this.setState({ error: true, submitting: false })
@@ -124,6 +150,7 @@ class SignInPage extends React.Component {
                   variant="contained"
                   color="primary"
                   fullWidth
+                  type="submit"
                 >
                   Kirjaudu sisään
                 </Button>
@@ -131,7 +158,7 @@ class SignInPage extends React.Component {
             </Form>
             {this.state.error && (
               <InfoBox>
-                <b>Invalid credentials</b>
+                <b>Virheelliset tunnukset, tarkista kirjoitusasu!</b>
               </InfoBox>
             )}
             <Row>

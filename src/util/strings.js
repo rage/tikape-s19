@@ -42,13 +42,3 @@ export function normalizeExerciseId(string) {
       .replace(/-+/g, "-"),
   )
 }
-
-export function stringToBoolean(string) {
-  if (string === "f") {
-    return false
-  }
-  if (string === undefined || string === null || string === false) {
-    return false
-  }
-  return true
-}

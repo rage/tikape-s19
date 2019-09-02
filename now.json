@@ -1,4 +1,11 @@
 {
-  "type": "static",
-  "alias": "tietokantojen-perusteet-19.mooc.fi"
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "public" }
+    }
+  ],
+  "alias": "tietokantojen-perusteet-s19.mooc.fi"
 }

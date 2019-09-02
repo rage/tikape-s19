@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { graphql, StaticQuery } from "gatsby"
 import { Button } from "@material-ui/core"
+import CourseSettings from "../../course-settings"
 
 import Logo from "./Logo"
 import TreeView from "./TreeView"
@@ -10,16 +11,20 @@ import withSimpleErrorBoundary from "../util/withSimpleErrorBoundary"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
+import {
+  MEDIUM_LARGE_BREAKPOINT,
+  SMALL_MEDIUM_BREAKPOINT,
+  MEDIUM_SIDEBAR_WIDTH,
+  LARGE_SIDEBAR_WIDTH,
+} from "../util/constants"
 
 const StyledIcon = styled(FontAwesomeIcon)`
   vertical-align: middle;
-  margin-right: 0.5rem;
-  margin-left: 0.1rem;
+  margin-right: 0.5em;
+  margin-left: 0.1em;
   color: var(--color);
   font-size: 1.5em;
 `
-
-export const SIDEBAR_WIDTH = "20rem"
 
 const SidebarContainer = styled.div`
   display: flex;
@@ -32,9 +37,9 @@ const SidebarContainer = styled.div`
       display: none;
     `}
 
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: ${SMALL_MEDIUM_BREAKPOINT}) {
     height: 100%;
-    width: ${SIDEBAR_WIDTH};
+    width: ${LARGE_SIDEBAR_WIDTH};
     position: fixed;
     top: 0;
     left: 0;
@@ -45,7 +50,11 @@ const SidebarContainer = styled.div`
     overflow-y: scroll;
     display: flex;
   }
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: ${MEDIUM_LARGE_BREAKPOINT}) {
+    width: ${MEDIUM_SIDEBAR_WIDTH};
+    font-size: 0.85rem;
+  }
+  @media only screen and (max-width: ${SMALL_MEDIUM_BREAKPOINT}) {
     width: 90%;
     max-width: 500px;
     margin: 0 auto;
@@ -61,16 +70,17 @@ const LogoContainer = styled.div`
 
 const TreeViewContainer = styled.nav`
   flex: 1;
+  margin-bottom: 1em;
 `
 
 const Brand = styled.div`
   width: 100%;
   text-align: center;
-  padding: 1rem;
-  padding-top: 2rem;
+  padding: 1em;
+  padding-top: 2em;
   font-weight: bold;
-  color: #6a3e23;
-  font-size: 1.3rem;
+  color: #c0392b;
+  font-size: 1.15em;
 `
 
 const MenuExpanderWrapper = styled.div`
@@ -78,33 +88,18 @@ const MenuExpanderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 1rem;
-  @media only screen and (min-width: 1200px) {
+  margin-top: 1em;
+  @media only screen and (min-width: ${SMALL_MEDIUM_BREAKPOINT}) {
     display: none;
   }
 `
 
-var content2 = [
-  {
-    title: "Tietoa kurssista",
-    path: "/",
-  },
-  {
-    title: "Osaamistavoitteet",
-    path: "/osaamistavoitteet",
-  },
-  { title: "Tukiväylät", path: "/tukivaylat" },
-  {
-    title: "Opettajille ja opinto-ohjaajille",
-    path: "/opettajille",
-  },
-  { separator: true },
-]
+var content2 = CourseSettings.default.sidebarEntries
 
-var futurePages = [] //  { title: "Osa 7", tba: "25.2.2019" }
+var futurePages = CourseSettings.default.sidebarFuturePages
 
 const MobileWrapper = styled.div`
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: ${SMALL_MEDIUM_BREAKPOINT}) {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -131,8 +126,23 @@ class Sidebar extends React.Component {
     if (process.env.NODE_ENV === "production") {
       edges = edges.filter(o => !o.hidden)
     }
+    edges = edges.filter(o => !o.information_page)
+    edges.sort((a, b) =>
+      a.title.localeCompare(b.title, undefined, {
+        numeric: true,
+        sensitivity: "base",
+      }),
+    )
     let content = content2.concat(edges)
     content = content.concat(futurePages)
+    if (CourseSettings.default.splitCourses) {
+      let middlepoint = content.findIndex(o => o.title === "Osa 7")
+      content.splice(middlepoint + 1, 0, {
+        separator: true,
+        title: "Ohjelmoinnin jatkokurssi",
+      })
+    }
+
     return (
       <MobileWrapperOrFragment mobileMenuOpen={this.props.mobileMenuOpen}>
         <MenuExpanderWrapper>
@@ -155,7 +165,7 @@ class Sidebar extends React.Component {
           </Button>
         </MenuExpanderWrapper>
         <SidebarContainer mobileMenuOpen={this.props.mobileMenuOpen}>
-          <Brand>Tietokantojen perusteet 2019</Brand>
+          <Brand>{CourseSettings.default.name}</Brand>
           <TreeViewContainer>
             <TreeView data={content} />
           </TreeViewContainer>
@@ -179,6 +189,7 @@ const query = graphql`
           id
           frontmatter {
             title
+            information_page
             path
             hidden
           }
