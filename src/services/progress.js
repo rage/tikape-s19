@@ -3,6 +3,7 @@ import { fetchCrowdsorcererProgress } from "./crowdsorcerer"
 import { zip } from "../util/arrays"
 import { fetchQuizProgress } from "./quiznator"
 import { fetchQuizzesProgress } from "./quizzes"
+import { fetchSQLTrainerProgress } from "./sqltrainer"
 
 const introductionCourseGroups = [
   "osa01",
@@ -16,7 +17,7 @@ const introductionCourseGroups = [
 
 export async function fetchProgress() {
   // await fetchQuizzesProgress()
-  const serviceIdentifiers = ["Ohjelmointitehtävät", "Kyselyt", "Crowdsorcerer"]
+  const serviceIdentifiers = [fetchSQLTrainerProgress()]
   const progressesCollection = await Promise.all([
     fetchProgrammingProgress(),
     fetchQuizzesProgress(),
@@ -38,11 +39,6 @@ export async function fetchProgress() {
     },
   )
   const toBeDeleted = []
-  Object.entries(progressByGroup).forEach(([group, serviceEntries]) => {
-    if (!Object.keys(serviceEntries).find(o => o === "Ohjelmointitehtävät")) {
-      toBeDeleted.push(group)
-    }
-  })
   if (
     currentCourseVariant === "ohja-dl" ||
     currentCourseVariant === "ohja-nodl"
