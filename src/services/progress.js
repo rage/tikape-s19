@@ -17,12 +17,8 @@ const introductionCourseGroups = [
 
 export async function fetchProgress() {
   // await fetchQuizzesProgress()
-  const serviceIdentifiers = [fetchSQLTrainerProgress()]
-  const progressesCollection = await Promise.all([
-    fetchProgrammingProgress(),
-    fetchQuizzesProgress(),
-    fetchCrowdsorcererProgress(),
-  ])
+  const serviceIdentifiers = ["SQL Trainer"]
+  const progressesCollection = await Promise.all([fetchSQLTrainerProgress()])
   const userDetails = await getCachedUserDetails()
   const currentCourseVariant = userDetails?.extra_fields?.course_variant
   const progressByGroup = {}
