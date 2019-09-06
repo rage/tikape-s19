@@ -71,7 +71,6 @@ class CourseOptionsEditor extends React.Component {
       digital_education_for_all: this.state.digital_education_for_all,
       marketing: this.state.marketing,
       research: this.state.research,
-      course_variant: this.state.currentCourseVariant,
     }
     const userField = {
       first_name: this.state.first_name,
@@ -211,17 +210,6 @@ class CourseOptionsEditor extends React.Component {
                   helperText={this.props.t("nosid")}
                   onFocus={this.handleFocus}
                   onBlur={this.handleUnFocus}
-                />
-              </Row>
-
-              <Row>
-                <DropdownMenu
-                  selectedVariant={
-                    this.state.currentCourseVariant ||
-                    this.props.courseVariant ||
-                    "dl"
-                  }
-                  setSelectedVariant={this.setSelectedVariant}
                 />
               </Row>
 
