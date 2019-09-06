@@ -3,8 +3,8 @@ const courseSettings = {
   name: "Tietokantojen perusteet, syksy 2019",
   subtitle: "Digitalisaation kulmakivi tutuksi -- menetelmiä tiedon tallentamiseen ja hakemiseen",
   slug: "tikape-s19",
-  tmcCourse: "tikape-s19",
-  tmcOrganization: "hy",
+  tmcCourse: "tikape-syksy-19",
+  tmcOrganization: "mooc",
   bannerPath: "banner.jpg",
   sidebarEntries: [
     {
