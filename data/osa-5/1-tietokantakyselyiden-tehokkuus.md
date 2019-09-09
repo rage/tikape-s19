@@ -138,7 +138,7 @@ Tietokannanhallintajärjestelmä vaihtaa läpikäytävien taulujen järjestystä
 Tutustutaan seuraavaksi mikä tämä indeksi oikein on.
 
 
-<quiznator id="5c5d614bfd9fd71425c64238"></quiznator>
+<quiz id="79ef0b39-c5c9-5fef-993d-5387ee828345"></quiz>
 
 ## Indeksit
 
@@ -228,4 +228,4 @@ Indeksin luominen tietokantataululle luo tietorakenteen, jota käytetään tiedo
 Lisää indekseistä mm. osoitteessa <a href="https://use-the-index-luke.com/" target="_blank">https://use-the-index-luke.com/</a>
 
 
-<quiznator id="5c5d5f3a244fe21455cb872e"></quiznator>
+<quiz id="42db8318-80bc-5abf-abbe-62f77d891798"></quiz>

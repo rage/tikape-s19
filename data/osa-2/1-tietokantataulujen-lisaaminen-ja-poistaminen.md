@@ -310,9 +310,9 @@ CREATE TABLE TilausAnnos (
 );
 ```
 
-<quiznator id="5c44988b14524713f959e8a1"></quiznator>
+<quiz id="d6914212-38c5-52af-94c3-eed3fcfe5350"></quiz>
 
-<quiznator id="5c4499c7244fe21455cb454d"></quiznator>
+<quiz id="2627626a-f2d7-43eb-b775-c31b892227be"></quiz>
 
 
 ## Tietokantataulun poistaminen: DROP TABLE

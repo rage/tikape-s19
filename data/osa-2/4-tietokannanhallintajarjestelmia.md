@@ -184,14 +184,14 @@ Seuraavat kyselyt olettavat, että tuot Chinook-tietokannan omalle koneellesi ja
 Kurssin <a href="https://tkt-lapio.github.io/" target="_blank">Tietokone Työvälineenä</a> materiaalista saattaa olla tässä myös hyötyä.
 
 
-<quiznator id="5c4575b6ddb6b814af31f7af"></quiznator>
+<quiz id="3f2ebda5-bd97-5750-acab-0078bd4b6976"></quiz>
 
 
-<quiznator id="5c44949cfd9fd71425c60201"></quiznator>
+<quiz id="58b0ce30-702b-5470-82ca-2d39ceddac75"></quiz>
 
 
-<quiznator id="5c4495bac41ed4148d968a89"></quiznator>
+<quiz id="5d628c5f-afa5-5d7c-8acc-8373d32290e4"></quiz>
 
 
-<quiznator id="5c44976c3972a914741004a0"></quiznator>
+<quiz id="064b764e-197c-51cd-9026-becb923f8719"></quiz>
 

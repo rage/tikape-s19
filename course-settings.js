@@ -4,6 +4,7 @@ const courseSettings = {
   subtitle: "Digitalisaation kulmakivi tutuksi -- menetelmiä tiedon tallentamiseen ja hakemiseen",
   slug: "tikape-s19",
   tmcCourse: "tikape-syksy-19",
+  quizzesId: "6fb70af7-5488-4c55-8be2-90bc0661fec3",
   tmcOrganization: "mooc",
   bannerPath: "banner.jpg",
   sidebarEntries: [

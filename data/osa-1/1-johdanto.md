@@ -11,7 +11,7 @@ hidden: false
 
 </text-box>
 
-<quiznator id="5c3c44b5ddb6b814af31df5d"></quiznator>
+<quiz id="17f36dab-97e6-5c1a-9a19-6c35b5b94fe7"></quiz>
 
 
 Olemme tietoisesti ja tiedostamattomasti kytköksissä lukemattomiin järjestelmiin. Kotien sähkön- ja vedenkulutusta seurataan elektronisesti, lehti- ja palvelutilaukset tehdään digitaalisiin järjestelmiin, säätiedot tulevat automaattisesti mobiililaitteeseen, suurin osa kommunikaatiosta tapahtuu sähköpostitse tai pikaviestinten kautta, kaupat seuraavat varastosaldojen kehitystä automaattisesti ostosten perusteella, sairaaloilla on sähköiset potilasrekisterit, yritykset tarjoavat räätälöityjä palveluita digitaalisen käyttäytymisen perusteella, ja niin edelleen.
@@ -20,7 +20,7 @@ Olemme tietoisesti ja tiedostamattomasti kytköksissä lukemattomiin järjestelm
 Lähes jokainen edellämainituista järjestelmistä ja palveluista perustuu tavalla tai toisella tiedon keräämiseen ja tallentamiseen. Sähkön- ja vedenkulutuksesta jää historia, jota käytetään laskutuksessa sekä kulutuksen ennustamisessa. Lehti- ja palvelutilaukset tallennetaan järjestelmiin, jotka muunmuassa automatisoivat laskutuksen, ja joiden kautta voidaan suositella vastaavia sopivia tuotteita. Sähköpostit ja pikaviestinviestit säilyvät tyypillisesti ainakin lähettäjällä ja vastaanottajalla, jonka lisäksi esimerkiksi pikaviestinpalveluita tarjoava operaattori voi tallentaa viestit omalle palvelimelleen mahdollista tulevaa käyttöä varten. Kauppojen varastosaldojen kehityksen perusteella voidaan optimoida sisäänostoa ja tätä kautta pienentää hävikkiä sekä toisaalta vähentää tavaroiden varastointiin menevää tilaa. Potilasrekisterit sisältävät mm. hoito- ja rokotehistorian, jolloin lääkärin on helpompi toimia yllättävissä tilanteissa.
 
 
-<quiznator id="5c39c988c41ed4148d966f23"></quiznator>
+<quiz id="8d054c47-e5ba-5f87-b3a8-27e9beab7205"></quiz>
 
 
 Tällaisia palveluita kehitetään jatkuvasti. Alla olevalla videolla on kuvattuna yhdysvaltalaisen ruokajätin Tescon toimintaa Etelä-Koreassa. Tesco muutti ruokatoimijoiden pelikenttää luomalla digitaalisia ostosmahdollisuuksia mm. kaupunkien metroasemille. Tuotteiden tilaaminen ja maksaminen tapahtuu kännykällä, ja tuotteet toimitetaan tilaajan kotiin.
@@ -57,7 +57,7 @@ Tässä kohtaa on hyvä hetki käydä tutustumassa muutamaan tietokantapalveluun
 Kokeile minkälaisia tuloksia löydät omalla etunimelläsi? Entä, minkälaisia tuloksia löydät nimillä Matti ja Maija? Palvelu pyrkii muunmuassa sisällyttämään läheiset nimien muunnokset hakutuloksiin, sillä nimet muuttuvat ajan myötä.
 
 
-<quiznator id="5c39cf13c41ed4148d966f2e"></quiznator>
+<quiz id="fa632708-ff78-58ba-a0f9-af31ea66a2c0"></quiz>
 
 
 ### Tiedon tallentamiseen ja hakemiseen liittyviä haasteita
@@ -184,7 +184,7 @@ Tietokantataulu Opintosuoritus sisältää kolme opintosuoritusta Pihlalle ja ka
 </figure>
 
 
-<quiznator id="5c39d13afd9fd71425c5e704"></quiznator>
+<quiz id="39136773-e3ba-57d6-a321-50fc873212d6"></quiz>
 
 
 <text-box variant='hint' name='Relaatiomalli'>

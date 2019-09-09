@@ -86,7 +86,7 @@ Tauluun puhelinnumero lisätään rivin yksilöivä pääavain, viiteavain henki
 
 Ensimmäisen normaalimuodon ehdot 3.--7. pätevät, joten tietokantataulu Henkilo on ensimmäisessä normaalimuodossa. Koska teimme uuden taulun Puhelinnumero, tulee sekin normalisoida. Tässä tapauksessa myös taulu Puhelinnumero on ensimmäisessä normaalimuodossa.
 
-<quiznator id="5c55dabe3972a91474103328"></quiznator>
+<quiz id="e7363c85-d7fe-5137-bcc6-266166bb208b"></quiz>
 
 
 ### Funktionaalinen riippuvuus
@@ -156,9 +156,9 @@ Voiko yksilöivän avaimen perusteella tunnistaa henkilön nimen? Kyllä.
 Yllä olevassa esimerkissä muutama vaihtoehdoista jää kysymysmerkeiksi. Ratkaiset nämä seuraavaksi.
 
 
-<quiznator id="5c55d87f3972a91474103323"></quiznator>
+<quiz id="76fa71ae-8a1e-563b-9e1b-58fd54dbd15b"></quiz>
 
-<quiznator id="5c55d5fd14524713f95a16cd"></quiznator>
+<quiz id="e22edbe0-e548-52a3-97bf-d9b9f15cd7a6"></quiz>
 
 
 ### Toinen normaalimuoto
@@ -235,7 +235,7 @@ Eräs mahdollinen ratkaisu ongelmaan on kaupungin siirtäminen tauluun `Kauppa`.
 Nyt jokainen ylläolevista tietokantatauluista on ensimmäisessä ja toisessa normaalimuodossa.
 
 
-<quiznator id="5c55fd71017ffc13eddca4bd"></quiznator>
+<quiz id="0e06aca2-95b2-5c4a-8769-8d863556fffa"></quiz>
 
 
 <text-box variant='hint' name='Kandidaattiavain'>
@@ -348,4 +348,4 @@ Esimerkki poisto-ongelmasta: Yllä ainejärjestöt ja osastot sijaitsevat samass
 Esimerkki lisäysongelmasta: Oletetaan, että saraketta `jarjesto` ei saa jättää tyhjäksi. Mikäli tietokantaan yritetään lisätä henkilö ilman järjestöä, lisääminen ei onnistu.
 
 
-<quiznator id="5c5606f099236814c5bb905c"></quiznator>
+<quiz id="142ba0d5-edf6-57fa-9536-6cd198ad9293"></quiz>

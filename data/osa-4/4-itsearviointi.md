@@ -11,25 +11,25 @@ Kurssin jokaisen osan jälkeen arvioidaan omaa osaamista sekä keksitään yksi 
 
 <only-for-ab-group group=1>
 
-<quiznator id="5c56cf5fddb6b814af32246a"></quiznator>
+<quiz id="324c7694-bbb9-5272-87a9-fef2492f9afe"></quiz>
 
 </only-for-ab-group>
 
 <only-for-ab-group group=2>
 
-<quiznator id="5c56cf3214524713f95a186d"></quiznator>
+<quiz id="3063c721-2a8c-53b7-b7f6-1b5b9d005a2b"></quiz>
 
 </only-for-ab-group>
 
 <only-for-ab-group group=3>
 
-<quiznator id="5c56cf5fddb6b814af32246a"></quiznator>
+<quiz id="324c7694-bbb9-5272-87a9-fef2492f9afe"></quiz>
 
-<quiznator id="5c56cf3214524713f95a186d"></quiznator>
+<quiz id="3063c721-2a8c-53b7-b7f6-1b5b9d005a2b"></quiz>
 
 </only-for-ab-group>
 
 </ab-study>
 
 
-<quiznator id="5c56cef814524713f95a186b"></quiznator>
+<quiz id="8f62acc8-7d75-5afa-9429-f40227f8eaf7"></quiz>

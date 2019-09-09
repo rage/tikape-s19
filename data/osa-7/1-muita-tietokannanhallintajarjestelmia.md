@@ -15,7 +15,7 @@ hidden: false
 </text-box>
 
 
-<quiznator id="5c72d1d899236814c5bbd215"></quiznator>
+<quiz id="a10efb97-b832-53f5-b72d-e8e6b3a6f166"></quiz>
 
 
 Relaatiomalli ja SQL ovat hyvin ilmaisuvoimainen kombinaatio ja relaatiotietokannoilla pystytään ainakin teoriassa hoitamaan lähes kaikki mahdolliset tiedonhallintatarpeet. Relaatiotietokannat dominoivatkin yhä tietokantaskeneä. 2000-luvulla alkoi kuitenkin nousta esiin uudentyyppisiä tietokantaratkaisuja, joita kuvaamaan lanseerattiin vuonna 2009 termi *NoSQL*.
@@ -630,4 +630,4 @@ Eräs melko paljon huomiota saanut NewSQL-tietokanta on vuonna 2015 Applen ostam
 
 <br/>
 
-<quiznator id="5c72d2cb14524713f95a59c2"></quiznator>
+<quiz id="743471c1-25c7-5f62-9371-c3619ae8512e"></quiz>

@@ -73,7 +73,7 @@ COMMIT;
 Jokainen tietokantakysely -- myös "yhden rivin kyselyt" -- suoritetaan transaktion sisällä. Tietokannanhallintajärjestelmän vastuulla on vahtia, että transaktiot suoritetaan peräkkäin siten, että samaa tietoa ei voida käsitellä useammasta transaktiosta saman aikaan.
 
 
-<quiznator id="5c56a8ca99236814c5bb90ee"></quiznator>
+<quiz id="2e5af2a0-fdae-5bdc-9025-171480eed7a1"></quiz>
 
 ## Tietokantatransaktiot ja rajoitteet
 
@@ -117,4 +117,4 @@ Perinteiset tietokannanhallintajärjestelmät tarvitsevat atomisuuden ja pysyvyy
 Tämä nopeuttaa tietokannan toimintaa merkittävästi, sillä pitkien operaatioiden kirjoittamista levylle ei tarvitse odottaa ennen kuin sovellukselle voidaan vastata operaation onnistuneen. Eristyvyyden toteuttamiseen käytetään mm. erilaisia taulu- ja rivilukitusmekanismeja. Kurssilla *Transaktioiden hallinta* tutustutaan tarkemmin transaktioiden toimintaan.
 
 
-<quiznator id="5c56a4f5c41ed4148d96b92a"></quiznator>
+<quiz id="94d0953e-801d-5b7c-9c2f-08f9a83e3265"></quiz>

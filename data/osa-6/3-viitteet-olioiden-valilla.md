@@ -243,6 +243,6 @@ Tähän ei ole suoraviivaista ratkaisua. Tyypillisesti `Dao`-rajapinnan määrit
 
 </text-box>
 
-<quiznator id="5c69cb383972a914741062cc"></quiznator>
+<quiz id="4e2513c1-e896-56f0-818f-6b42e07b673d"></quiz>
 
-<quiznator id="5c69cd8f3972a914741062d1"></quiznator>
+<quiz id="522af75c-fa9a-5e17-9dc6-c22ecb9511ab"></quiz>

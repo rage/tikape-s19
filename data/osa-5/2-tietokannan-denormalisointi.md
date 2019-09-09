@@ -85,7 +85,7 @@ Tietokannan denormalisoinnin ensimmäinen askel on tietokannan tehokkuuden tarka
 
 Denormalisoinnista on lisäksi hyötyä esimerkiksi usein tarvittavien tietojen ennakkoon tallentamisessa (tietokantatauluun voidaan laskea ajoittain vaikkapa joku usein kysytty keskiarvoluku), raporttien nopeassa hakemisessa (tietokantatauluun voidaan laskea raportit valmiiksi, jolloin niitä ei tarvitse luoda tarvittaessa), ja historiatietojen tallentamisessa (tiedot voivat muuttua ajan myötä, mutta vanhakin tieto voi oll tärkeää).
 
-<quiznator id="5c604e18c41ed4148d96d192"></quiznator>
+<quiz id="9eb559da-3001-598b-95fd-f9e22b010900"></quiz>
 
 
 <moodle-exercise name="Tiedon denormalisointi">

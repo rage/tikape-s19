@@ -139,4 +139,4 @@ Tehtäväpohjassa ei ole testejä. Palauta tehtävä kun sovelluksessa on mahdol
 </programming-exercise>
 
 
-<quiznator id="5c6a65d9ddb6b814af32527d"></quiznator>
+<quiz id="764f41ea-7ec3-55c7-a21d-bdf8448149aa"></quiz>

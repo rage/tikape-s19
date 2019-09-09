@@ -63,7 +63,7 @@ Puhelinmyyntiyrityksen Luuri ja Pojat toimitusjohtaja Matti Luuri kertoo seuraav
 
 *Tee ylläolevasta kuvauksesta tietosisältöanalyysi, eli etsi järjestelmään liittyvät käsitteet. Luo käsitteiden pohjalta käsitekaavio (luokkakaavio). Yhteyksien ja osallistumisrajoitteiden merkintä on oleellista, attribuuteista tulee merkitä vain oleellisimmat. Lopulliseen vastaukseen riittää vain lopullinen kurssimateriaalin käytänteitä noudattava tekstimuotoinen käsitekaavio.*
 
-<quiznator id="5c73a0c114524713f95a5b5c"></quiznator>
+<quiz id="10dada36-12b1-57c9-8ae6-131655936a7d"></quiz>
 
 
 ## Käsiteanalyysistä tietokantakaavioksi
@@ -75,7 +75,7 @@ Puhelinmyyntiyrityksen Luuri ja Pojat toimitusjohtaja Matti Luuri kertoo seuraav
 <img src="../img/huoltotapahtumat.png"/>
 
 
-<quiznator id="5c73a1a7017ffc13eddce954"></quiznator>
+<quiz id="9335f503-9dcb-5d21-b6b3-b94fdb68eaac"></quiz>
 
 
 ## Tietokantakyselyitä

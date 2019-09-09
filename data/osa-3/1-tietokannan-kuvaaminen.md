@@ -235,7 +235,7 @@ Koko tilausjärjestelmä voidaan kuvata tekstimuotoisessa esitysmuodossa seuraav
 - [Ravintola]1-\*[Annos]<br/>
 
 
-<quiznator id="5c4e275099236814c5bb7d06"></quiznator>
+<quiz id="88709f78-d146-558f-a7f0-25a067183e5e"></quiz>
 
 ##  Yhteysrajoitteet ja oliot
 

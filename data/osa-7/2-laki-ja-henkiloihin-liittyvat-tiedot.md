@@ -53,7 +53,7 @@ Henkilötiedot ovat henkilötietoja vaikka ne hajauttaisi useammalle palvelimell
 Mikäli henkilötiedot (pseudo)anonymisoidaan eli niistä poistetaan henkilöön viittaavat tiedot, mutta henkilö on yhä tunnistettavissa pienen "myyräntyön" jälkeen, ovat tiedot yhä henkilötietoja. Mikäli henkilöä ei voida tunnistaa anonymisoiduista henkilötiedoista minkäänlaisen menetelmän avulla, ei tietoja enää nähdä henkilötietoina.
 
 
-<quiznator id="5c7391f53972a91474107780"></quiznator>
+<quiz id="6a0d07df-93d2-5532-84bb-bc8c22c7ae05"></quiz>
 
 
 ## Milloin henkilötietoja saa käsitellä?
@@ -89,5 +89,5 @@ Näiden lisäksi yritysten ja julkisten organisaatioiden välillä on eroja tiet
 Esimerkiksi Suomen koulutusjärjestelmällä on laillinen vastuu koulutuksen järjestämisestä -- omien koulutustietojen poistaminen ei yliopiston rekisteristä (todennäköisesti) onnistu, eikä yliopiston erikseen tule pyytää lupaa koulutustietojen tallentamiseen. Vastaavia poikkeuksia löytyy myös tieteelliseen tutkimukseen liittyen.
 
 
-<quiznator id="5c7392f699236814c5bbd382"></quiznator>
+<quiz id="a05b8cb9-9c32-5c52-b625-88c229e098b9"></quiz>
 
