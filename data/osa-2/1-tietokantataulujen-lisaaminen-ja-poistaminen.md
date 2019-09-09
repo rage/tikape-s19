@@ -312,9 +312,6 @@ CREATE TABLE TilausAnnos (
 
 <quiz id="d6914212-38c5-52af-94c3-eed3fcfe5350"></quiz>
 
-<quiz id="2627626a-f2d7-43eb-b775-c31b892227be"></quiz>
-
-
 ## Tietokantataulun poistaminen: DROP TABLE
 
 Tietokantataulun poistaminen onnistuu `DROP TABLE`-lauseella, jota seuraa poistettavan taulun nimi. Esimerkiksi edellä luodun `Asiakas`-taulun poistaminen onnistuisi seuraavasti.

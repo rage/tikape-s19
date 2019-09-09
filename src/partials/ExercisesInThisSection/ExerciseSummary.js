@@ -26,6 +26,12 @@ const ExerciseSummary = ({ exercise, index, quizIdToTitle, t }) => {
   if (exercise.type === "crowdsorcerer") {
     description = "Crowdsorcerer"
   }
+  if (exercise.type === "moodle-exercise") {
+    description = `${t("moodleExercise")} ${exercise.id}`
+  }
+  if (exercise.type === "sqltrainer-exercise") {
+    description = `${t("sqlTrainerExercise")} ${exercise.id}`
+  }
   let anchorLinkDigest = normalizeExerciseId(`${exercise.type}-${exercise.id}`)
   return (
     <ExerciseSummaryWrapper

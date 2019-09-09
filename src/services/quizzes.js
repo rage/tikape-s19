@@ -1,6 +1,7 @@
 import axios from "axios"
 import { accessToken } from "./moocfi"
 import CourseSettings from "../../course-settings"
+import { fetchAbGroup } from "./abstudio"
 
 const id = CourseSettings.default.quizzesId
 const language = CourseSettings.default.language
@@ -12,7 +13,23 @@ export async function fetchQuizzesProgress() {
     `https://quizzes.mooc.fi/api/v1/courses/${id}/users/current/progress`,
     { headers: { Authorization: `Bearer ${accessToken()}` } },
   )
-  return response.data?.points_by_group
+  let decreaseMaxPoints = 1
+  const { group } = await fetchAbGroup("self_evaluation_k19_tikape")
+  if (group === 3) {
+    decreaseMaxPoints = 0
+  }
+  console.log("ab group", group)
+  let progress = response.data?.points_by_group
+  console.log("progress before", progress)
+
+  progress = progress.map(data => {
+    data.max_points = data.max_points - decreaseMaxPoints
+    return data
+  })
+
+  console.log("progress after", progress)
+
+  return progress
 }
 
 export async function fetchQuizNames() {
