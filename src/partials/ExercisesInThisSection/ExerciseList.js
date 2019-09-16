@@ -59,6 +59,13 @@ class ExerciseList extends React.Component {
               <Title>
                 {i + 1}. {page.title}
               </Title>
+              {i === this.state.sectionPages.length - 1 && (
+                <div>
+                  Huomaa, että tämän aliosan tehtäväluettelossa näkyy pari
+                  ylimääräistä tehtävää teknillisten ongelmien takia. Näät
+                  konkreettiset tehtävät menemällä aliosan sivulle.
+                </div>
+              )}
               <div>
                 {page.exercises.map((exercise, i2) => {
                   return (
