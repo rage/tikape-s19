@@ -55,7 +55,9 @@ const PartProgress = ({ name, data, appliesForStudyRight, t }) => {
   const allChartData = Object.entries(data).map(([tool, data]) => {
     return {
       tool,
-      progress: Math.floor(data.progress * 100 + 0.000000001),
+      progress: Math.floor(
+        (data.n_points / data.max_points) * 100 + 0.000000001,
+      ),
       n_points: data.n_points,
       max_points: data.max_points,
     }
