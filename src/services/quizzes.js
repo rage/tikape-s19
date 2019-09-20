@@ -13,10 +13,10 @@ export async function fetchQuizzesProgress() {
     `https://quizzes.mooc.fi/api/v1/courses/${id}/users/current/progress`,
     { headers: { Authorization: `Bearer ${accessToken()}` } },
   )
-  let decreaseMaxPoints = 3
+  let decreaseMaxPoints = 1
   const { group } = await fetchAbGroup("self_evaluation_k19_tikape")
   if (group === 3) {
-    decreaseMaxPoints = 2
+    decreaseMaxPoints = 0
   }
   console.log("ab group", group)
   let progress = response.data?.points_by_group
