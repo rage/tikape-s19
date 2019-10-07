@@ -53,18 +53,6 @@ const ExtraDetails = ({ exerciseDetails, onUpdate, noCoins, t }) => {
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
-      <ExpansionPanel>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>{t("solutionHowTo")}</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Coins
-            exerciseDetails={exerciseDetails}
-            onUpdate={onUpdate}
-            noCoins={noCoins}
-          />
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
     </div>
   )
 }
