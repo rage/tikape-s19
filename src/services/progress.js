@@ -4,6 +4,7 @@ import { zip } from "../util/arrays"
 import { fetchQuizProgress } from "./quiznator"
 import { fetchQuizzesProgress } from "./quizzes"
 import { fetchSQLTrainerProgress } from "./sqltrainer"
+import { fetchConceptsProgress } from "./concepts"
 
 const introductionCourseGroups = [
   "osa01",
@@ -13,15 +14,22 @@ const introductionCourseGroups = [
   "osa05",
   "osa06",
   "osa07",
+  "osa08",
 ]
 
 export async function fetchProgress() {
   // await fetchQuizzesProgress()
-  const serviceIdentifiers = ["Kyselyt", "SQL Trainer", "Ohjelmointitehtävät"]
+  const serviceIdentifiers = [
+    "Kyselyt",
+    "SQL Trainer",
+    "Ohjelmointitehtävät",
+    "Concepts (bonus)",
+  ]
   const progressesCollection = await Promise.all([
     fetchQuizzesProgress(),
     fetchSQLTrainerProgress(),
     fetchProgrammingProgress(),
+    fetchConceptsProgress(),
   ])
   const userDetails = await getCachedUserDetails()
   const currentCourseVariant = userDetails?.extra_fields?.course_variant
