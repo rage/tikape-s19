@@ -25,4 +25,4 @@ on saatavilla [GitHubissa](https://github.com/rage/concepts).
 
 Jos lomake ei näy alla, käytä seuraavaa linkkiä: https://forms.gle/jRaDQLsaZFwFwk166
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfQoiePRY3RdV78-e0_R-PhpBJE_ELNAA7Twg3e5gdZZR0hXw/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfQoiePRY3RdV78-e0_R-PhpBJE_ELNAA7Twg3e5gdZZR0hXw/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
