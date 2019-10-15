@@ -5,7 +5,7 @@ overview: true
 hidden: false
 ---
 
-<deadline>16.10.2019</deadline>
+<deadline>18.10.2019</deadline>
 
 
 Kertaat ja tunnistat olio-ohjelmoinnista tuttujen luokkien ja tietokantataulujen välisen yhteyden. Opit Data Access Object (DAO) -suunnittelumallin ja tutustut sen käyttökohteisiin. Opit DAO-suunnittelumallin haittapuolista ja tiedät mistä N+1 -kyselyn ongelmassa on kyse. Tunnet käsitteen SQL-injektio ja tunnet menetelmiä SQL-injektioiden estämiseen.
